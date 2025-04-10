@@ -6,7 +6,7 @@ variable "project-id" {
 variable "org_id" {
   type = string
   default = ""
-  sensitive = true
+  #sensitive = true
 }
 
 variable "region" {
@@ -77,3 +77,14 @@ variable "environment_instance_settings" {
   type = map(any)
 }
 
+variable "enable_billing_user" {
+  type    = bool
+  default = false
+  # Do NOT mark this as sensitive
+}
+
+variable "enable_xpn_roles" {
+  type    = bool
+  default = false
+  # Do NOT mark this as sensitive
+}
