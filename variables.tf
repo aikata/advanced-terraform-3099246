@@ -6,7 +6,7 @@ variable "project-id" {
 variable "org_id" {
   type = string
   default = ""
-  sensitive = true
+  #sensitive = true
 }
 
 variable "region" {
@@ -74,31 +74,17 @@ variable "environment_machine_type" {
 }
 
 variable "environment_instance_settings" {
-  type = map(object({machine_type=string, labels=map(string)}))
-  default = {
-    "DEV" = {
-      machine_type = "f1-micro"
-      labels = {
-        environment = "dev"
-      }
-    },
-   "QA" = {
-      machine_type = "e2-micro"
-      labels = {
-        environment = "qa"
-      }
-    },
-    "STAGE" = {
-      machine_type = "e2-micro"
-      labels = {
-        environment = "stage"
-      }
-    },
-    "PROD" = {
-      machine_type = "e2-medium"
-      labels = {
-        environment = "prod"
-      }
-    }
-  }
+  type = map(any)
+}
+
+variable "enable_billing_user" {
+  type    = bool
+  default = false
+  # Do NOT mark this as sensitive
+}
+
+variable "enable_xpn_roles" {
+  type    = bool
+  default = false
+  # Do NOT mark this as sensitive
 }
